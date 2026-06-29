@@ -45,7 +45,7 @@ serve(async (req) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "Joe Web Design Form <onboarding@resend.dev>",
+        from: "Joe Web Design <inquiry@contact.joewebdesigns.com>",
         to: [TO_EMAIL],
         subject: `New Contact Submission from ${name}`,
         html: `
