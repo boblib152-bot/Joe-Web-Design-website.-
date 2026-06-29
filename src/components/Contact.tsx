@@ -1,13 +1,34 @@
 import { motion } from 'motion/react';
 import { useState, FormEvent } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 export function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{ name, email, message }]);
+
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error('Error submitting form:', err);
+      setErrorMsg(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -53,6 +74,9 @@ export function Contact() {
                     type="text" 
                     id="name" 
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    disabled={submitting}
                     className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded-xs transition-colors duration-300 placeholder:text-muted/30"
                     placeholder="Your name"
                   />
@@ -64,6 +88,9 @@ export function Contact() {
                     type="email" 
                     id="email" 
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={submitting}
                     className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded-xs transition-colors duration-300 placeholder:text-muted/30"
                     placeholder="your@email.com"
                   />
@@ -75,16 +102,24 @@ export function Contact() {
                     id="message" 
                     required
                     rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    disabled={submitting}
                     className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded-xs transition-colors duration-300 resize-none placeholder:text-muted/30"
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </div>
 
+                {errorMsg && (
+                  <p className="text-xs text-red-500 -mt-4">{errorMsg}</p>
+                )}
+
                 <button 
                   type="submit"
-                  className="group self-start mt-4 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wider text-primary transition-colors duration-300 hover:text-accent border border-muted/30 px-8 py-4 rounded-sm hover:border-accent bg-surface/50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  disabled={submitting}
+                  className="group self-start mt-4 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wider text-primary transition-colors duration-300 hover:text-accent border border-muted/30 px-8 py-4 rounded-sm hover:border-accent bg-surface/50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Inquiry 
+                  {submitting ? 'Sending...' : 'Send Inquiry'}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </form>
