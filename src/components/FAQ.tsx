@@ -4,20 +4,20 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
-    question: "What does 'hands-off' actually mean for me?",
-    answer: "It means you provide the initial brief and assets, and I handle the rest. From art direction and wireframing to full development and deployment, you won't need to micromanage or write a single line of code. You review milestones, I handle the execution."
+    question: "How much of my time will this project take?",
+    answer: "Very little. Once we discuss your goals and you share your basic info, I handle all the design and setup. You can focus on your clients while I take care of building the website."
   },
   {
-    question: "How long does a typical project take?",
-    answer: "Most bespoke websites take between 4 to 8 weeks, depending on the complexity and scope. Because my process is streamlined, we avoid the typical agency bottlenecks and endless revision cycles."
+    question: "What features can you build into my website?",
+    answer: "I set up everything your business needs to succeed online—including appointment booking calendars, client inquiry forms, map locations, and contact pages so client inquiries reach you instantly."
   },
   {
-    question: "Do you handle hosting and domain setup?",
-    answer: "Yes. Every project includes complete technical setup. I configure your domain, optimize your hosting for speed and security, and ensure everything is running flawlessly before we hand over the keys."
+    question: "What happens after the website is live?",
+    answer: "I keep your website running smoothly and securely in the background. A simple monthly fee covers hosting, system updates, and support whenever you need to change text or images."
   },
   {
-    question: "What if I need updates after launch?",
-    answer: "I offer ongoing maintenance retainers for clients who want to remain completely hands-off post-launch. Alternatively, I build the site on an intuitive CMS so you or your team can make simple updates if you prefer."
+    question: "Do I fully own the website once it is complete?",
+    answer: "Yes, the website is 100% yours. While I manage the hosting and updates for you, you own the domain and all the website content, with complete freedom to move it whenever you wish."
   }
 ];
 
@@ -25,7 +25,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-background py-32 px-6 md:px-12 relative z-10">
+    <section id="faqs" className="bg-background py-32 px-6 md:px-12 relative z-10">
       <div className="mx-auto max-w-4xl">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -40,6 +40,7 @@ export function FAQ() {
         <div className="flex flex-col border-t border-surface">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
+            const answerId = `faq-answer-${index}`;
             
             return (
               <motion.div 
@@ -52,7 +53,9 @@ export function FAQ() {
               >
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between py-8 text-left transition-colors hover:text-accent"
+                  className="flex w-full items-center justify-between py-8 text-left transition-colors duration-300 hover:text-accent cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm px-1"
+                  aria-expanded={isOpen}
+                  aria-controls={answerId}
                 >
                   <span className="font-serif text-xl md:text-2xl">{faq.question}</span>
                   <span className="ml-6 flex-shrink-0 text-muted">
@@ -63,13 +66,16 @@ export function FAQ() {
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={answerId}
+                      role="region"
+                      aria-labelledby={`faq-question-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-8 text-muted leading-relaxed max-w-2xl">
+                      <p className="pb-8 text-muted leading-relaxed max-w-2xl text-sm md:text-base">
                         {faq.answer}
                       </p>
                     </motion.div>

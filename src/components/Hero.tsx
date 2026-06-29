@@ -15,7 +15,7 @@ export function Hero() {
           transition={{ ...transition, delay: 0.2 }}
           className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted"
         >
-          Joe Web Designer
+          Joe Web Design
         </motion.p>
         
         <h1 className="font-serif text-5xl leading-[1.1] tracking-tight md:text-7xl lg:text-9xl">
@@ -25,7 +25,7 @@ export function Hero() {
             transition={transition}
             className="block"
           >
-            High-end design.
+            Bespoke websites.
           </motion.span>
           <motion.span 
             initial={{ opacity: 0, y: 40 }}
@@ -33,7 +33,7 @@ export function Hero() {
             transition={{ ...transition, delay: 0.1 }}
             className="block text-accent italic"
           >
-            Zero friction.
+            Built quickly.
           </motion.span>
         </h1>
 
@@ -44,10 +44,13 @@ export function Hero() {
           className="mt-16 flex max-w-xl flex-col gap-6 md:mt-24 md:flex-row md:items-center md:gap-12"
         >
           <p className="text-lg leading-relaxed text-muted">
-            You run your business. I build your bespoke, seamlessly animated digital presence—completely hands-off from start to finish.
+            I design, build, and maintain high-performance, full-stack websites for professionals—so you can focus on your clients while I handle the code.
           </p>
           <div className="h-[1px] flex-1 bg-surface md:h-12 md:w-[1px] md:flex-none border-l border-muted/20"></div>
-          <a href="#contact" className="group flex items-center gap-3 text-sm font-medium uppercase tracking-wider text-primary transition-colors hover:text-accent">
+          <a 
+            href="#contact" 
+            className="group flex items-center gap-3 text-sm font-medium uppercase tracking-wider text-primary transition-colors duration-300 hover:text-accent cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm px-1 py-0.5"
+          >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>

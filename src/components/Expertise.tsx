@@ -2,16 +2,16 @@ import { motion } from 'motion/react';
 
 const expertises = [
   {
-    title: 'Bespoke Art Direction',
-    description: 'We establish a cohesive, premium aesthetic that elevates your brand—without requiring endless revisions or micromanagement from you.'
+    title: 'Speed & Full-Stack',
+    description: 'I handle both front-end and back-end development to deliver a custom website quickly. No templates, no delays.'
   },
   {
-    title: 'Turnkey Development',
-    description: 'I bring designs to life with fluid animations and robust, scalable code. A completely hands-off, end-to-end development cycle.'
+    title: 'Bespoke for Professionals',
+    description: 'Tailored specifically for professionals, establishing a polished, premium aesthetic that instantly builds trust with your clients.'
   },
   {
-    title: 'Zero-Friction Launch',
-    description: 'From domain setup to hosting and technical SEO optimization, everything is handled. You just step back and enjoy the final product.'
+    title: 'Hosting & Maintenance',
+    description: 'Once live, your hosting and security are fully taken care of. A simple monthly retainer covers all ongoing support and updates.'
   }
 ];
 
@@ -40,7 +40,7 @@ export function Expertise() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-150px" }}
               transition={{ duration: 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-6 border-t border-muted/20 pt-8"
+              className="flex flex-col gap-6 border-t border-muted/20 pt-8 transition-colors duration-500 hover:border-accent"
             >
               <h3 className="font-serif text-2xl text-primary">{item.title}</h3>
               <p className="leading-relaxed text-muted">{item.description}</p>

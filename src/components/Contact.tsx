@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
   };
@@ -23,10 +23,10 @@ export function Contact() {
             className="md:w-1/2 sticky top-0 z-30 bg-surface md:bg-transparent md:static pt-6 -mt-6 pr-12 md:pr-0 md:pt-0 md:-mt-0 pb-4 md:pb-0"
           >
             <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight text-primary">
-              Let's build something <span className="italic text-accent">beautiful.</span>
+              Let's build your <span className="italic text-accent">website.</span>
             </h2>
             <p className="mt-8 text-lg text-muted max-w-md leading-relaxed">
-              Ready for a completely hands-off design experience? Reach out today and we'll craft the perfect digital presence for your brand.
+              Ready to launch your practice's custom website quickly? Let's discuss your project.
             </p>
           </motion.div>
 
@@ -53,7 +53,7 @@ export function Contact() {
                     type="text" 
                     id="name" 
                     required
-                    className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent transition-colors placeholder:text-muted/30"
+                    className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded-xs transition-colors duration-300 placeholder:text-muted/30"
                     placeholder="Your name"
                   />
                 </div>
@@ -64,7 +64,7 @@ export function Contact() {
                     type="email" 
                     id="email" 
                     required
-                    className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent transition-colors placeholder:text-muted/30"
+                    className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded-xs transition-colors duration-300 placeholder:text-muted/30"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -75,17 +75,17 @@ export function Contact() {
                     id="message" 
                     required
                     rows={4}
-                    className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent transition-colors resize-none placeholder:text-muted/30"
+                    className="w-full bg-transparent border-b border-muted/30 pb-3 text-primary focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent rounded-xs transition-colors duration-300 resize-none placeholder:text-muted/30"
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </div>
 
                 <button 
                   type="submit"
-                  className="group self-start mt-4 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wider text-primary transition-colors hover:text-accent border border-muted/30 px-8 py-4 rounded-sm hover:border-accent bg-surface/50"
+                  className="group self-start mt-4 inline-flex items-center gap-4 text-sm font-medium uppercase tracking-wider text-primary transition-colors duration-300 hover:text-accent border border-muted/30 px-8 py-4 rounded-sm hover:border-accent bg-surface/50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   Send Inquiry 
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </form>
             )}

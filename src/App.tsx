@@ -1,6 +1,5 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { SelectedWork } from './components/SelectedWork';
 import { Expertise } from './components/Expertise';
 import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
@@ -12,7 +11,6 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <SelectedWork />
         <Expertise />
         <FAQ />
         <Contact />

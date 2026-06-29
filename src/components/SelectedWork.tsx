@@ -5,21 +5,21 @@ const projects = [
   {
     id: 1,
     title: 'Lumina',
-    category: 'E-Commerce / Bespoke Design',
+    category: 'Legal Practice / Full-Stack & Booking',
     image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2000&auto=format&fit=crop',
     year: '2024'
   },
   {
     id: 2,
     title: 'Aether Studios',
-    category: 'Portfolio / Immersive 3D',
+    category: 'Architecture Firm / Interactive Portfolio',
     image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000&auto=format&fit=crop',
     year: '2023'
   },
   {
     id: 3,
     title: 'Vanguard',
-    category: 'Corporate / Luxury Brand',
+    category: 'Financial Advisors / Portal & Custom CMS',
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
     year: '2023'
   }
@@ -38,7 +38,7 @@ export function SelectedWork() {
         >
           <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl">Selected <span className="italic text-accent">Works</span></h2>
           <p className="max-w-sm text-muted leading-relaxed text-sm md:text-base">
-            A curated selection of high-end projects, delivered through a completely hands-off and seamless process for my clients.
+            A look at premium websites created for professionals, custom-built from front-end to back-end quickly.
           </p>
         </motion.div>
 
@@ -60,7 +60,8 @@ export function SelectedWork() {
                 >
                   <img 
                     src={project.image} 
-                    alt={project.title} 
+                    alt={`Screenshot of ${project.title} - ${project.category}`} 
+                    loading="lazy"
                     className="h-full w-full object-cover sepia-[0.3] brightness-75 transition-all duration-700 group-hover:sepia-0 group-hover:brightness-100"
                   />
                 </motion.div>
@@ -76,8 +77,8 @@ export function SelectedWork() {
                   <p className="mt-4 text-sm text-muted">{project.category}</p>
                 </div>
                 <div className="mt-12">
-                  <button className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-primary hover:text-accent transition-colors">
-                    View Project <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                  <button className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-primary hover:text-accent transition-colors duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm px-2 py-1">
+                    View Project <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>
